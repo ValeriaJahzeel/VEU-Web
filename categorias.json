@@ -1,0 +1,490 @@
+{
+    "categorias": [
+      {
+        "id_categoria": 1,
+        "nombre_categoria": "Servicios",
+        "areas": [
+          {
+            "id_area": 1,
+            "nombre_area": "Agua",
+            "tipos": [
+              {
+                "id_tipo": 1,
+                "nombre_tipo": "Fuga en la calle"
+              },
+              {
+                "id_tipo": 2,
+                "nombre_tipo": "Fuga domiciliaria"
+              },
+              {
+                "id_tipo": 3,
+                "nombre_tipo": "Calidad del agua"
+              },
+              {
+                "id_tipo": 4,
+                "nombre_tipo": "¿Corte / Reconexión?"
+              },
+              {
+                "id_tipo": 5,
+                "nombre_tipo": "Otro"
+              },
+              {
+                "id_tipo": 78,
+                "nombre_tipo": "Fallo del drenaje"
+              },
+              {
+                "id_tipo": 89,
+                "nombre_tipo": "Derenaje obstruido"
+              },
+              {
+                "id_tipo": 90,
+                "nombre_tipo": "Desabasto"
+              }
+            ]
+          },
+          {
+            "id_area": 2,
+            "nombre_area": "Obras",
+            "tipos": [
+              {
+                "id_tipo": 6,
+                "nombre_tipo": "Bacheo"
+              },
+              {
+                "id_tipo": 7,
+                "nombre_tipo": "Daño en instalaciones"
+              },
+              {
+                "id_tipo": 8,
+                "nombre_tipo": "Queja sobre construcción"
+              },
+              {
+                "id_tipo": 9,
+                "nombre_tipo": "Otro"
+              },
+              {
+                "id_tipo": 73,
+                "nombre_tipo": "Colapso de superficie"
+              },
+              {
+                "id_tipo": 74,
+                "nombre_tipo": "Terracería"
+              }
+            ]
+          },
+          {
+            "id_area": 3,
+            "nombre_area": "Urbanismo",
+            "tipos": [
+              {
+                "id_tipo": 10,
+                "nombre_tipo": "Fallo de alumbrado"
+              },
+              {
+                "id_tipo": 11,
+                "nombre_tipo": "Fallo de semáforo"
+              },
+              {
+                "id_tipo": 12,
+                "nombre_tipo": "Cables sueltos"
+              },
+              {
+                "id_tipo": 13,
+                "nombre_tipo": "Balizado"
+              },
+              {
+                "id_tipo": 14,
+                "nombre_tipo": "Poda"
+              },
+              {
+                "id_tipo": 15,
+                "nombre_tipo": "Mantenimiento"
+              },
+              {
+                "id_tipo": 16,
+                "nombre_tipo": "Otro"
+              },
+              {
+                "id_tipo": 71,
+                "nombre_tipo": "Falta de alumbrado"
+              },
+              {
+                "id_tipo": 77,
+                "nombre_tipo": "Vehículo abandonado"
+              },
+              {
+                "id_tipo": 79,
+                "nombre_tipo": "Falta de electricidad"
+              },
+              {
+                "id_tipo": 84,
+                "nombre_tipo": "Registro eléctrico expuesto"
+              },
+              {
+                "id_tipo": 91,
+                "nombre_tipo": "Obstrucción"
+              }
+            ]
+          },
+          {
+            "id_area": 4,
+            "nombre_area": "Ecología",
+            "tipos": [
+              {
+                "id_tipo": 17,
+                "nombre_tipo": "Solicitud de tala"
+              },
+              {
+                "id_tipo": 18,
+                "nombre_tipo": "Denuncia de tala"
+              },
+              {
+                "id_tipo": 19,
+                "nombre_tipo": "Contaminación"
+              },
+              {
+                "id_tipo": 20,
+                "nombre_tipo": "Foco de infección"
+              },
+              {
+                "id_tipo": 21,
+                "nombre_tipo": "Condiciones insalubres"
+              },
+              {
+                "id_tipo": 22,
+                "nombre_tipo": "Otro"
+              }
+            ]
+          },
+          {
+            "id_area": 5,
+            "nombre_area": "Residuos",
+            "tipos": [
+              {
+                "id_tipo": 23,
+                "nombre_tipo": "Recolección de basura"
+              },
+              {
+                "id_tipo": 24,
+                "nombre_tipo": "Basura en la calle"
+              },
+              {
+                "id_tipo": 25,
+                "nombre_tipo": "Solicitud de barrido"
+              },
+              {
+                "id_tipo": 26,
+                "nombre_tipo": "Otro"
+              }
+            ]
+          },
+          {
+            "id_area": 10,
+            "nombre_area": "Animal",
+            "tipos": [
+              {
+                "id_tipo": 39,
+                "nombre_tipo": "Animal en riesgo"
+              },
+              {
+                "id_tipo": 40,
+                "nombre_tipo": "Maltrato animal"
+              },
+              {
+                "id_tipo": 41,
+                "nombre_tipo": "Fauna invasora"
+              },
+              {
+                "id_tipo": 42,
+                "nombre_tipo": "Otro"
+              },
+              {
+                "id_tipo": 76,
+                "nombre_tipo": "Perrito en calle"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id_categoria": 2,
+        "nombre_categoria": "Social",
+        "areas": [
+          {
+            "id_area": 7,
+            "nombre_area": "Cultura",
+            "tipos": [
+              {
+                "id_tipo": 33,
+                "nombre_tipo": "Presentación"
+              },
+              {
+                "id_tipo": 34,
+                "nombre_tipo": "Otro"
+              },
+              {
+                "id_tipo": 80,
+                "nombre_tipo": "Concierto"
+              },
+              {
+                "id_tipo": 81,
+                "nombre_tipo": "Poesía"
+              },
+              {
+                "id_tipo": 82,
+                "nombre_tipo": "Festival"
+              },
+              {
+                "id_tipo": 83,
+                "nombre_tipo": "Obra"
+              },
+              {
+                "id_tipo": 87,
+                "nombre_tipo": "Danza"
+              }
+            ]
+          },
+          {
+            "id_area": 8,
+            "nombre_area": "Deporte",
+            "tipos": [
+              {
+                "id_tipo": 35,
+                "nombre_tipo": "Futbol"
+              },
+              {
+                "id_tipo": 36,
+                "nombre_tipo": "Otro"
+              },
+              {
+                "id_tipo": 85,
+                "nombre_tipo": "Natación"
+              }
+            ]
+          },
+          {
+            "id_area": 9,
+            "nombre_area": "Museo",
+            "tipos": [
+              {
+                "id_tipo": 37,
+                "nombre_tipo": "Visitas"
+              },
+              {
+                "id_tipo": 38,
+                "nombre_tipo": "Otro"
+              }
+            ]
+          },
+          {
+            "id_area": 11,
+            "nombre_area": "Juventud",
+            "tipos": [
+              {
+                "id_tipo": 43,
+                "nombre_tipo": "Becas"
+              },
+              {
+                "id_tipo": 44,
+                "nombre_tipo": "Otro"
+              }
+            ]
+          },
+          {
+            "id_area": 12,
+            "nombre_area": "Prevención de delito",
+            "tipos": [
+              {
+                "id_tipo": 45,
+                "nombre_tipo": "Juntas vecinales"
+              },
+              {
+                "id_tipo": 46,
+                "nombre_tipo": "Alarmas"
+              },
+              {
+                "id_tipo": 47,
+                "nombre_tipo": "Otro"
+              }
+            ]
+          },
+          {
+            "id_area": 18,
+            "nombre_area": "Economía",
+            "tipos": [
+              {
+                "id_tipo": 86,
+                "nombre_tipo": "Emprendimiento"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id_categoria": 3,
+        "nombre_categoria": "Seguridad",
+        "areas": [
+          {
+            "id_area": 13,
+            "nombre_area": "Protección civil",
+            "tipos": [
+              {
+                "id_tipo": 48,
+                "nombre_tipo": "Problema en evento"
+              },
+              {
+                "id_tipo": 49,
+                "nombre_tipo": "Emergencia"
+              },
+              {
+                "id_tipo": 50,
+                "nombre_tipo": "Desastre"
+              },
+              {
+                "id_tipo": 51,
+                "nombre_tipo": "Material peligroso"
+              },
+              {
+                "id_tipo": 52,
+                "nombre_tipo": "Riesgo público"
+              },
+              {
+                "id_tipo": 53,
+                "nombre_tipo": "Otro"
+              },
+              {
+                "id_tipo": 75,
+                "nombre_tipo": "Árbol caído"
+              }
+            ]
+          },
+          {
+            "id_area": 14,
+            "nombre_area": "Policia",
+            "tipos": [
+              {
+                "id_tipo": 54,
+                "nombre_tipo": "Solicitud de patrullaje"
+              },
+              {
+                "id_tipo": 55,
+                "nombre_tipo": "Robo a casa"
+              },
+              {
+                "id_tipo": 56,
+                "nombre_tipo": "Robo de vehículo"
+              },
+              {
+                "id_tipo": 57,
+                "nombre_tipo": "Robo a negocio"
+              },
+              {
+                "id_tipo": 58,
+                "nombre_tipo": "Violación"
+              },
+              {
+                "id_tipo": 59,
+                "nombre_tipo": "Otro"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id_categoria": 4,
+        "nombre_categoria": "Gobierno",
+        "areas": [
+          {
+            "id_area": 6,
+            "nombre_area": "Bienestar",
+            "tipos": [
+              {
+                "id_tipo": 27,
+                "nombre_tipo": "Despensa"
+              },
+              {
+                "id_tipo": 28,
+                "nombre_tipo": "Caravana de salud"
+              },
+              {
+                "id_tipo": 29,
+                "nombre_tipo": "Cama"
+              },
+              {
+                "id_tipo": 30,
+                "nombre_tipo": "Pótesis"
+              },
+              {
+                "id_tipo": 31,
+                "nombre_tipo": "Desayunos"
+              },
+              {
+                "id_tipo": 32,
+                "nombre_tipo": "Otro"
+              },
+              {
+                "id_tipo": 88,
+                "nombre_tipo": "Apoyo funcional"
+              }
+            ]
+          },
+          {
+            "id_area": 15,
+            "nombre_area": "Atención",
+            "tipos": [
+              {
+                "id_tipo": 60,
+                "nombre_tipo": "Mejoras"
+              },
+              {
+                "id_tipo": 61,
+                "nombre_tipo": "Peticiones"
+              },
+              {
+                "id_tipo": 62,
+                "nombre_tipo": "Permisos"
+              },
+              {
+                "id_tipo": 63,
+                "nombre_tipo": "Licencias"
+              },
+              {
+                "id_tipo": 64,
+                "nombre_tipo": "Renovación de licencia"
+              },
+              {
+                "id_tipo": 65,
+                "nombre_tipo": "Otro"
+              }
+            ]
+          },
+          {
+            "id_area": 16,
+            "nombre_area": "Transparencia",
+            "tipos": [
+              {
+                "id_tipo": 66,
+                "nombre_tipo": "Solicitud de información"
+              },
+              {
+                "id_tipo": 67,
+                "nombre_tipo": "Petición de auditoría"
+              },
+              {
+                "id_tipo": 68,
+                "nombre_tipo": "Queja"
+              },
+              {
+                "id_tipo": 69,
+                "nombre_tipo": "Denuncia de corrupción"
+              },
+              {
+                "id_tipo": 70,
+                "nombre_tipo": "Otro"
+              }
+            ]
+          }
+        ]
+      }
+    ]
+}
