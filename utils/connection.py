@@ -3,12 +3,6 @@ import os
 from dotenv import load_dotenv
 
 def get_connection():
-    """
-    Establece la conexión con Supabase.
-    
-    Returns:
-        Objeto de conexión a Supabase
-    """
     load_dotenv()
     supabase_url = os.getenv("SUPABASE_URL")
     supabase_key = os.getenv("SUPABASE_KEY")
@@ -23,12 +17,6 @@ def get_connection():
 
 # Función para obtener datos de reportes de Supabase
 def obtener_reportes():
-    """
-    Consulta la tabla 'reporte' en Supabase para obtener los datos.
-    
-    Returns:
-        Lista de diccionarios con los datos de los reportes
-    """
     try:
         # Obtener la conexión de Supabase
         supabase = get_connection()

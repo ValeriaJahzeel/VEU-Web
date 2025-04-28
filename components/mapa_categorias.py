@@ -2,7 +2,7 @@ import streamlit as st
 import json
 
 def mostrar_panel_categorias():
-    with open('ruta/a/tu/archivo.json', 'r', encoding='utf-8') as archivo:
+    with open('./CP/output.json', 'r', encoding='utf-8') as archivo:
         datos = json.load(archivo)
     
     """Muestra el panel de filtros de categorías"""
