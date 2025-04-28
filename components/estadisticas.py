@@ -1,97 +1,103 @@
+# components/estadisticas.py
+# ------------------------------------------------------------------
+#  Estadísticas basadas en datos REALES de Supabase
+# ------------------------------------------------------------------
+from datetime import datetime, timedelta
+import pandas as pd
+import plotly.express as px
 import streamlit as st
-import plotly.graph_objects as go
-from utils.data import obtener_datos_barras, obtener_datos_lineas
+from utils.connection import obtener_reportes     # ← tu función central
 
+# ──────────────────────────────────────────────────────────────────
+# 1. Cargar datos (con caché)
+# ──────────────────────────────────────────────────────────────────
+@st.cache_data(ttl=600, show_spinner=False)
+def _load_reportes_df():
+    data = obtener_reportes()              # lista de dicts
+    df = pd.DataFrame(data)
+    if df.empty:
+        return df
+    df["fecha_creacion"] = pd.to_datetime(df["fecha_creacion"])
+    df["fk_reporte_tipo"] = df["fk_reporte_tipo"].astype("Int64")
+    return df
+
+
+@st.cache_data
+def _load_tipos():
+    """Catálogo id_tipo → nombre legible."""
+    try:
+        df_tipo = pd.read_csv("csv_ejemplos/tipo_rows.csv")     # ajusta ruta si fuese otra
+        return dict(zip(df_tipo["id_tipo"], df_tipo["nombre_tipo"]))
+    except FileNotFoundError:
+        st.warning("No se encontró tipo_rows.csv; usaré IDs como etiqueta.")
+        return {}
+
+
+TIPO_LABEL = _load_tipos()
+
+# ──────────────────────────────────────────────────────────────────
+# 2. Renderizar estadísticas
+# ──────────────────────────────────────────────────────────────────
 def mostrar_estadisticas():
-    """Muestra la sección de estadísticas con gráficos"""
-    # Título de la sección
-    st.markdown("<h2 class='reportes-section'>Estadísticas</h2>", unsafe_allow_html=True)
-    
-    # Gráfica de barras
-    mostrar_grafica_barras()
-    
-    # Gráfica de líneas
-    mostrar_grafica_lineas()
+    df = _load_reportes_df()
 
-def mostrar_grafica_barras():
-    """Muestra la gráfica de barras apiladas para reportes por tipo"""
-    st.markdown("<h3>Reportes por tipo</h3>", unsafe_allow_html=True)
-    
-    # Obtener datos para la gráfica
-    meses, tipos_reportes, colores, datos_por_tipo = obtener_datos_barras()
-    
-    # Crear la gráfica de barras apiladas
-    fig_barras = go.Figure()
-    
-    for i, tipo in enumerate(tipos_reportes):
-        fig_barras.add_trace(go.Bar(
-            x=meses,
-            y=datos_por_tipo[tipo],
-            name=tipo,
-            marker_color=colores[i % len(colores)]
-        ))
-    
-    fig_barras.update_layout(
-        barmode='stack',
-        title='Reportes mensuales por tipo',
-        xaxis_title='Mes',
-        yaxis_title='Número de reportes',
-        legend_title='Tipo de reporte',
-        template='plotly_white',
-        height=400,
-        margin=dict(t=50, b=50, l=50, r=50)
-    )
-    
-    # Mostrar la gráfica de barras apiladas en una tarjeta
-    st.markdown("<div class='stats-card'>", unsafe_allow_html=True)
-    st.plotly_chart(fig_barras, use_container_width=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+    st.markdown("<h2 class='sub-header'>Estadísticas</h2>", unsafe_allow_html=True)
 
-def mostrar_grafica_lineas():
-    """Muestra la gráfica de líneas temporales"""
-    st.markdown("<h3>Línea temporal</h3>", unsafe_allow_html=True)
-    
-    # Obtener datos para la gráfica
-    df_lineas = obtener_datos_lineas()
-    
-    # Crear la gráfica de líneas
-    fig_lineas = go.Figure()
-    
-    fig_lineas.add_trace(go.Scatter(
-        x=df_lineas['fecha'],
-        y=df_lineas['Total'],
-        mode='lines+markers',
-        name='Total',
-        line=dict(color='#1f77b4', width=3)
-    ))
-    
-    fig_lineas.add_trace(go.Scatter(
-        x=df_lineas['fecha'],
-        y=df_lineas['Resueltos'],
-        mode='lines+markers',
-        name='Resueltos',
-        line=dict(color='#2ca02c', width=3)
-    ))
-    
-    fig_lineas.add_trace(go.Scatter(
-        x=df_lineas['fecha'],
-        y=df_lineas['Pendientes'],
-        mode='lines+markers',
-        name='Pendientes',
-        line=dict(color='#d62728', width=3)
-    ))
-    
-    fig_lineas.update_layout(
-        title='Evolución de reportes a lo largo del tiempo',
-        xaxis_title='Fecha',
-        yaxis_title='Número de reportes',
-        legend_title='Estado',
-        template='plotly_white',
-        height=400,
-        margin=dict(t=50, b=50, l=50, r=50)
+    if df.empty:
+        st.info("Sin datos disponibles en la base.")
+        return
+
+    # 2-A. Aplicar filtros globales --------------------------------
+    periodo = st.session_state.get("filtro_periodo", "Última semana")
+    cp      = st.session_state.get("filtro_cp")
+
+    hoy = datetime.now()
+    if periodo == "Última semana":
+        df = df[df["fecha_creacion"] >= hoy - timedelta(days=7)]
+    elif periodo == "Último mes":
+        df = df[df["fecha_creacion"] >= hoy - timedelta(days=30)]
+    elif periodo == "Últimos 3 meses":
+        df = df[df["fecha_creacion"] >= hoy - timedelta(days=90)]
+    # “Todo” → sin filtro
+
+    if cp:
+        df = df[df["codigo_postal"] == cp]
+
+    if df.empty:
+        st.info("No existen registros para los filtros seleccionados.")
+        return
+
+    # 2-B. Serie temporal ------------------------------------------
+    serie = (df.groupby(df["fecha_creacion"].dt.date)
+               .size().reset_index(name="reportes")
+               .sort_values("fecha_creacion"))
+    st.plotly_chart(
+        px.line(serie, x="fecha_creacion", y="reportes",
+                title="Reportes por día",
+                labels={"fecha_creacion": "Fecha", "reportes": "Número de reportes"}),
+        use_container_width=True
     )
-    
-    # Mostrar la gráfica de líneas en una tarjeta
-    st.markdown("<div class='stats-card'>", unsafe_allow_html=True)
-    st.plotly_chart(fig_lineas, use_container_width=True)
-    st.markdown("</div>", unsafe_allow_html=True)
+
+    # 2-C. Distribución por tipo -----------------------------------
+    tipos = (df.groupby("fk_reporte_tipo")
+               .size().reset_index(name="cantidad")
+               .sort_values("cantidad", ascending=False))
+    tipos["tipo"] = tipos["fk_reporte_tipo"].map(
+        lambda x: TIPO_LABEL.get(x, f"Tipo {x}")
+    )
+
+    col1, col2 = st.columns(2)
+
+    with col1:
+        st.plotly_chart(
+            px.pie(tipos, values="cantidad", names="tipo",
+                   title="Distribución de reportes por tipo"),
+            use_container_width=True
+        )
+    with col2:
+        st.plotly_chart(
+            px.bar(tipos, x="tipo", y="cantidad",
+                   title="Cantidad de reportes por tipo",
+                   labels={"tipo": "Tipo de reporte", "cantidad": "Cantidad"}),
+            use_container_width=True
+        )
