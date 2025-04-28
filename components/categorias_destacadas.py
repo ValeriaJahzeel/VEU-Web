@@ -1,8 +1,8 @@
 import streamlit as st
-from utils.connection import obtener_conteo_por_tipo_y_estado  # 🔵 Importar la función correcta
+from utils.connection import obtener_conteo_eventos_por_tipo_y_estado  # 🔵 Importamos la función correcta
 
 def mostrar_categorias_destacadas():
-    """Muestra la sección de categorías destacadas"""
+    """Muestra la sección de categorías destacadas basada en conteo de eventos"""
     
     # Sección Categorías Destacadas con título
     st.markdown("<div class='categories-header'>Categorías destacadas</div>", unsafe_allow_html=True)
@@ -17,14 +17,14 @@ def mostrar_categorias_destacadas():
         )
         # Nota: el filtro aún no se aplica, pero ya está preparado
 
-    # Obtener datos de las categorías
-    categorias_data = obtener_conteo_por_tipo_y_estado()
+    # 🔵 Obtener datos de las categorías
+    categorias_data = obtener_conteo_eventos_por_tipo_y_estado()
 
     if not categorias_data:
         st.warning("No se encontraron datos de categorías.")
         return
 
-    # 🔵 Ordenar categorías por el total de reportes (resueltos + no resueltos)
+    # 🔵 Ordenar categorías por el total de eventos (resueltos + no resueltos)
     categorias_ordenadas = sorted(
         categorias_data.items(),
         key=lambda x: x[1].get("resueltos", 0) + x[1].get("no_resueltos", 0),
@@ -38,12 +38,12 @@ def mostrar_categorias_destacadas():
     cols = st.columns(len(categorias_top4))
 
     # Mostrar tarjetas de categorías
-    for idx, (categoria, datos) in enumerate(categorias_top4):
+    for idx, (nombre_tipo, datos) in enumerate(categorias_top4):
         with cols[idx]:
             st.markdown(f"""
             <div class='category-card'>
-                <div class='icon'>📋</div> <!-- Puedes personalizar el ícono -->
-                <h4>{categoria}</h4>
+                <div class='icon'>📋</div> <!-- Aquí puedes personalizar íconos por tipo -->
+                <h4>{nombre_tipo}</h4>
                 <div>
                     <span>No resueltos</span>
                     <div class='count-box'>{datos.get('no_resueltos', 0)}</div>

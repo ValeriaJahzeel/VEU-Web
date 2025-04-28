@@ -35,6 +35,114 @@ def obtener_reportes():
         print(f"Error al obtener reportes: {e}")
         return []
 
+# ----------------------------
+# Nueva función solicitada: obtener reportes con nombre de tipo
+# ----------------------------
+def obtener_reportes_con_nombre_tipo():
+    """
+    Obtiene los reportes junto con el nombre del tipo (unión con tabla tipo).
+    
+    Returns:
+        Lista de diccionarios con los datos de reportes y nombre_tipo
+    """
+    try:
+        supabase = get_connection()
+
+        # 🔵 Hacer un JOIN manual usando select anidado
+        response = supabase.table("reporte").select(
+            """
+            id_reporte,
+            fecha_creacion,
+            fecha_resuelto,
+            latitud,
+            longitud,
+            codigo_postal,
+            fk_reporte_tipo(
+                nombre_tipo
+            )
+            """
+        ).execute()
+
+        if response and hasattr(response, "data") and response.data:
+            reportes = []
+            for reporte in response.data:
+                nombre_tipo = None
+                # fk_reporte_tipo vendrá como un diccionario si el join fue correcto
+                if isinstance(reporte.get("fk_reporte_tipo"), dict):
+                    nombre_tipo = reporte["fk_reporte_tipo"].get("nombre_tipo")
+                
+                reporte["nombre_tipo"] = nombre_tipo
+                # (Opcional) eliminar fk_reporte_tipo original si no lo quieres
+                reporte.pop("fk_reporte_tipo", None)
+                
+                reportes.append(reporte)
+
+            return reportes
+        else:
+            print("No se encontraron datos de reportes o respuesta inesperada.")
+            return []
+        
+    except Exception as e:
+        print(f"Error al obtener reportes con nombre de tipo: {e}")
+        return []
+
+def obtener_conteo_eventos_por_tipo_y_estado():
+    """
+    Suma el número de eventos agrupados por tipo de reporte (nombre_tipo) 
+    y separados entre resueltos y no resueltos.
+    
+    Returns:
+        Diccionario con nombre_tipo como clave y conteos de eventos como valores
+    """
+    try:
+        supabase = get_connection()
+
+        response = supabase.table("reporte").select(
+            """
+            num_eventos,
+            fecha_resuelto,
+            fk_reporte_tipo(
+                nombre_tipo
+            )
+            """
+        ).execute()
+
+        if response and hasattr(response, "data") and response.data:
+            conteo_eventos = {}
+
+            for reporte in response.data:
+                # Obtener tipo de reporte
+                nombre_tipo = "Otro"
+                if isinstance(reporte.get("fk_reporte_tipo"), dict):
+                    nombre_tipo = reporte["fk_reporte_tipo"].get("nombre_tipo", "Otro")
+                
+                # Obtener cantidad de eventos
+                eventos = reporte.get("num_eventos", 0) or 0
+
+                # Saber si es resuelto o no
+                resuelto = reporte.get("fecha_resuelto") is not None
+
+                # Inicializar si no existe
+                if nombre_tipo not in conteo_eventos:
+                    conteo_eventos[nombre_tipo] = {"resueltos": 0, "no_resueltos": 0}
+
+                # Sumar en el contador correcto
+                if resuelto:
+                    conteo_eventos[nombre_tipo]["resueltos"] += eventos
+                else:
+                    conteo_eventos[nombre_tipo]["no_resueltos"] += eventos
+
+            return conteo_eventos
+        
+        else:
+            print("No se encontraron datos de reportes o respuesta inesperada.")
+            return {}
+        
+    except Exception as e:
+        print(f"Error al obtener conteo de eventos por tipo y estado: {e}")
+        return {}
+
+
 # Función para obtener datos agrupados por tipo de reporte
 def obtener_reportes_por_tipo():
     """
