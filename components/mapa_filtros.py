@@ -1,4 +1,8 @@
 import streamlit as st
+<<<<<<< HEAD
+from components.mapa_categorias import mostrar_panel_categorias
+from components.mapa import mostrar_mapa
+=======
 import json
 import pandas as pd
 import folium
@@ -226,6 +230,7 @@ def mostrar_info_cp_cards(codigo_postal):
         st.error(f"Error inesperado: {str(e)}")
         import traceback
         st.error(traceback.format_exc())
+>>>>>>> d129f7d8b75ae2e048b03d82ce8e1cb9b9c5d300
 
 def mostrar_mapa_y_filtros():
     """Muestra la sección del mapa y los filtros laterales"""
