@@ -4,6 +4,7 @@ def obtener_reportes():
     try:
         supabase = connection() # Obtener la conexión de Supabase
         
+        # obtener datos de reportes
         response = supabase.table("reporte").select("fecha_creacion,fecha_resuelto,fk_reporte_tipo,latitud,longitud,codigo_postal").execute()
         
         print("Respuesta completa:", response)
