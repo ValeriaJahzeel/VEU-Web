@@ -1,0 +1,91 @@
+id_tipo,nombre_tipo,fk_tipo_area
+1,Fuga en la calle,1
+2,Fuga domiciliaria,1
+3,Calidad del agua,1
+4,¿Corte / Reconección?,1
+5,Otro,1
+6,Bacheo,2
+7,Daño en instalaciones,2
+8,Queja sobre construcción,2
+9,Otro,2
+10,Fallo de alumbrado,3
+11,Fallo de semáforo,3
+12,Cables sueltos,3
+13,Balizado,3
+14,Poda,3
+15,Mantenimiento,3
+16,Otro,3
+17,Solicitud de tala,4
+18,Denuncia de tala,4
+19,Contaminación,4
+20,Foco de infección,4
+21,Condiciones insalubres,4
+22,Otro,4
+23,Recolección de basura,5
+24,Basura en la calle,5
+25,Solicitud de barrido,5
+26,Otro,5
+27,Despensa,6
+28,Caravana de salud,6
+29,Cama,6
+30,Pótesis,6
+31,Desayunos,6
+32,Otro,6
+33,Presentación,7
+34,Otro,7
+35,Futbol,8
+36,Otro,8
+37,Visitas,9
+38,Otro,9
+39,Animal en riesgo,10
+40,Maltrato animal,10
+41,Fauna invasora,10
+42,Otro,10
+43,Becas,11
+44,Otro,11
+45,Juntas vecinales,12
+46,Alarmas,12
+47,Otro,12
+48,Problema en evento,13
+49,Emergencia,13
+50,Desastre,13
+51,Material peligroso,13
+52,Riesgo público,13
+53,Otro,13
+54,Solicitud de patrullaje,14
+55,Robo a casa,14
+56,Robo de vehículo,14
+57,Robo a negocio,14
+58,Violación,14
+59,Otro,14
+60,Mejoras,15
+61,Peticiones,15
+62,Permisos,15
+63,Licencias,15
+64,Renovación de licencia,15
+65,Otro,15
+66,Solicitud de información,16
+67,Petición de auditoría,16
+68,Queja,16
+69,Denuncia de corrupción,16
+70,Otro,16
+71,Falta de alumbrado,3
+73,Colapso de superficie,2
+74,Terracería,2
+75,"Árbol caído ",13
+76,Perrito en calle,10
+77,Vehículo abandonado,3
+78,Fallo del drenaje,1
+79,Falta de electricidad,3
+80,Concierto,7
+81,Poesía,7
+82,Festival,7
+83,Obra,7
+84,Registro eléctrico expuesto,3
+85,Natación,8
+86,Emprendimiento,18
+87,Danza,7
+88,Apoyo funcional,6
+89,Derenaje obstruido,1
+90,Desabasto,1
+91,Obstrucción,3

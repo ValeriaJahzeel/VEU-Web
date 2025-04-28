@@ -1,0 +1,18 @@
+id_area,nombre_area,fk_area_categoria
+1,Agua,1
+2,Obras,1
+3,Urbanismo,1
+4,Ecología,1
+5,Residuos,1
+6,Bienestar,4
+7,Cultura,2
+8,Deporte,2
+9,Museo,2
+10,Animal,1
+11,Juventud,2
+12,Prevención de delito,2
+13,Protección civil,3
+14,Policia,3
+15,Atención,4
+16,Transparencia,4
+18,Economía,2
