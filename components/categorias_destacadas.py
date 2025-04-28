@@ -15,24 +15,34 @@ def mostrar_categorias_destacadas():
             ["Última semana", "Último mes", "Últimos 3 meses", "Todo"],
             index=0
         )
-        # Nota: actualmente el filtro por periodo no afecta nada porque no está implementado
+        # Nota: el filtro aún no se aplica, pero ya está preparado
 
     # Obtener datos de las categorías
-    categorias_data = obtener_conteo_por_tipo_y_estado()  # 🔵 Usamos ahora la función nueva
+    categorias_data = obtener_conteo_por_tipo_y_estado()
 
     if not categorias_data:
         st.warning("No se encontraron datos de categorías.")
         return
 
+    # 🔵 Ordenar categorías por el total de reportes (resueltos + no resueltos)
+    categorias_ordenadas = sorted(
+        categorias_data.items(),
+        key=lambda x: x[1].get("resueltos", 0) + x[1].get("no_resueltos", 0),
+        reverse=True
+    )
+
+    # 🔵 Tomar solo las 4 primeras
+    categorias_top4 = categorias_ordenadas[:4]
+
     # Crear columnas para las tarjetas
-    cols = st.columns(len(categorias_data))
+    cols = st.columns(len(categorias_top4))
 
     # Mostrar tarjetas de categorías
-    for idx, (categoria, datos) in enumerate(categorias_data.items()):
+    for idx, (categoria, datos) in enumerate(categorias_top4):
         with cols[idx]:
             st.markdown(f"""
             <div class='category-card'>
-                <div class='icon'>📋</div> <!-- Puedes personalizar el ícono si quieres -->
+                <div class='icon'>📋</div> <!-- Puedes personalizar el ícono -->
                 <h4>{categoria}</h4>
                 <div>
                     <span>No resueltos</span>
