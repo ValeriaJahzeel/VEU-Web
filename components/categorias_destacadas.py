@@ -1,5 +1,5 @@
 import streamlit as st
-from utils.data import obtener_conteo_por_tipo_y_estado  # 🔵 Importar la función correcta
+from utils.connection import obtener_conteo_por_tipo_y_estado  # 🔵 Importar la función correcta
 
 def mostrar_categorias_destacadas():
     """Muestra la sección de categorías destacadas"""
