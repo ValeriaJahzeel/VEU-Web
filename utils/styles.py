@@ -1,7 +1,6 @@
 import streamlit as st
 
 def apply_styles():
-    """Aplica los estilos CSS personalizados a la aplicación"""
     st.markdown("""
     <style>
         .main-header {
