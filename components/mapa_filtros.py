@@ -1,6 +1,6 @@
 import streamlit as st
 from components.mapa_categorias import mostrar_panel_categorias
-from components.mapa_categorias import mostrar_mapa
+from components.mapa import mostrar_mapa
 
 def mostrar_mapa_y_filtros():
     """Muestra la sección del mapa y los filtros laterales"""
