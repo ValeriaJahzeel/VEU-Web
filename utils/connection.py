@@ -3,12 +3,6 @@ import os
 from dotenv import load_dotenv
 
 def get_connection():
-    """
-    Establece la conexión con Supabase.
-    
-    Returns:
-        Objeto de conexión a Supabase
-    """
     load_dotenv()
     supabase_url = os.getenv("SUPABASE_URL")
     supabase_key = os.getenv("SUPABASE_KEY")
@@ -23,12 +17,6 @@ def get_connection():
 
 # Función para obtener datos de reportes de Supabase
 def obtener_reportes():
-    """
-    Consulta la tabla 'reporte' en Supabase para obtener los datos.
-    
-    Returns:
-        Lista de diccionarios con los datos de los reportes
-    """
     try:
         # Obtener la conexión de Supabase
         supabase = get_connection()
@@ -103,6 +91,39 @@ def obtener_conteo_por_estado():
     except Exception as e:
         print(f"Error al contar reportes por estado: {e}")
         return {"resueltos": 0, "no_resueltos": 0}
+    
+def obtener_conteo_por_tipo_y_estado():
+    """
+    Cuenta los reportes por tipo y estado (resuelto/no resuelto).
+    
+    Returns:
+        Diccionario donde cada clave es un tipo de reporte, 
+        y su valor es otro diccionario con el conteo de resueltos y no resueltos.
+    """
+    try:
+        reportes = obtener_reportes()
+        
+        conteo = {}
+        
+        for reporte in reportes:
+            tipo = reporte.get("fk_reporte_tipo", "Otro")
+            resuelto = bool(reporte.get("fecha_resuelto"))
+            
+            # Inicializar estructura si no existe
+            if tipo not in conteo:
+                conteo[tipo] = {"resueltos": 0, "no_resueltos": 0}
+            
+            # Sumar al conteo correspondiente
+            if resuelto:
+                conteo[tipo]["resueltos"] += 1
+            else:
+                conteo[tipo]["no_resueltos"] += 1
+        
+        return conteo
+
+    except Exception as e:
+        print(f"Error al contar reportes por tipo y estado: {e}")
+        return {}
 
 # Si quieres probar la conexión directamente al ejecutar este archivo
 if __name__ == "__main__":
