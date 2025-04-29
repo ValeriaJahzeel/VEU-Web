@@ -28,7 +28,7 @@ def obtener_reportes():
         if response and hasattr(response, "data") and response.data:
             return response.data
         else:
-            print("No se encontraron datos o formato de respuesta inesperado.")
+            print("No se encontraron datos o formato de respuesta inespe`rado.")
             return []
             
     except Exception as e:

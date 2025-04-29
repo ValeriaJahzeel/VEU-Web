@@ -3,7 +3,7 @@ import json
 import pandas as pd
 import folium
 from streamlit_folium import folium_static
-from folium.plugins import MarkerCluster
+from utils.connection import obtener_reportes
 
 def mostrar_filtro_cp():
     """Muestra el panel de filtro por código postal y los resultados filtrados en tarjetas"""
@@ -41,8 +41,15 @@ def obtener_reportes_por_cp(codigo_postal):
     # Obtener todos los reportes
     reportes = obtener_reportes()
     
-    # Filtrar por código postal
-    filtrados = [reporte for reporte in reportes if str(reporte.get("codigo_postal", "")) == codigo_postal]
+    # Filtrar por código postal (asegurarse de que ambos sean strings para comparar)
+    cp_str = str(codigo_postal).strip()
+    filtrados = []
+    
+    for reporte in reportes:
+        if reporte.get("codigo_postal") is not None:
+            reporte_cp = str(reporte.get("codigo_postal")).strip()
+            if reporte_cp == cp_str:
+                filtrados.append(reporte)
     
     return filtrados
 
@@ -138,44 +145,14 @@ def mostrar_mapa_filtrado(codigo_postal=None):
         
         return m
 
-def obtener_coordenadas_cp(codigo_postal):
+def mostrar_info_cp_cards(codigo_postal):
     """
-    Intenta obtener las coordenadas geográficas aproximadas para un código postal
+    Muestra la información de un código postal específico en tarjetas solo si 
+    el código postal existe en la base de datos de Supabase.
     
     Args:
-        codigo_postal: Código postal a buscar
-        
-    Returns:
-        Tupla con (latitud, longitud) o None si no se encuentra
+        codigo_postal: Código postal para mostrar información
     """
-    try:
-        # Intentar cargar el archivo JSON de códigos postales
-        with open('./CP/output.json', 'r', encoding="utf-8") as f:
-            data = json.load(f)
-        
-        # Buscar el código postal
-        for item in data:
-            if isinstance(item, dict) and 'd_codigo' in item:
-                if str(item['d_codigo']) == codigo_postal:
-                    # Si el registro tiene coordenadas explícitas, usarlas
-                    if 'latitud' in item and 'longitud' in item:
-                        return float(item['latitud']), float(item['longitud'])
-                    
-                    # Si no tiene coordenadas explícitas pero sí CP, buscar reportes con ese CP
-                    reportes = obtener_reportes_por_cp(codigo_postal)
-                    if reportes:
-                        for reporte in reportes:
-                            if reporte.get('latitud') and reporte.get('longitud'):
-                                return float(reporte['latitud']), float(reporte['longitud'])
-        
-        # Si no encontramos coordenadas, retornar None
-        return None
-    
-    except Exception as e:
-        st.error(f"Error al obtener coordenadas para CP: {str(e)}")
-        return None
-
-def mostrar_info_cp_cards(codigo_postal):
     if not codigo_postal:
         return
     

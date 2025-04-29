@@ -1,9 +1,4 @@
 import streamlit as st
-from utils.styles import apply_styles
-from components.header import create_header
-from components.categorias_destacadas import mostrar_categorias_destacadas
-from components.mapa_filtros import mostrar_mapa_y_filtros
-from components.estadisticas import mostrar_estadisticas
 
 # Configuración de la página
 st.set_page_config(
@@ -12,6 +7,14 @@ st.set_page_config(
     layout="wide",
     initial_sidebar_state="collapsed"
 )
+
+from utils.styles import apply_styles
+from components.header import create_header
+from components.categorias_destacadas import mostrar_categorias_destacadas
+from components.mapa_filtros import mostrar_mapa_y_filtros
+from components.estadisticas import mostrar_estadisticas
+
+
 
 # Aplicar estilos CSS
 apply_styles()
