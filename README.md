@@ -1,12 +1,12 @@
-# Dashboard de Reportes
+# VEU - "La flota que observa la ciudad"
 
 ![Banner del Proyecto](https://via.placeholder.com/800x200/1A4E8C/FFFFFF?text=Dashboard+de+Reportes)
 
-## 📋 Descripción
+## Descripción
 
-Este proyecto es un dashboard interactivo desarrollado con Streamlit para visualizar y analizar reportes georeferenciados. Permite filtrar por código postal, ver estadísticas temporales y explorar categorías destacadas de reportes.
+Este proyecto fue desarrollado en base a las problemáticas presentadas por VEU en el Mobility Hacktaton. Esta problemática consiste en un dashboard interactivo desarrollado con Streamlit para visualizar y analizar reportes georeferenciados. Permite filtrar por código postal, ver estadísticas temporales y explorar categorías destacadas de reportes.
 
-## ✨ Características
+## Características
 
 - **Visualización geográfica**: Mapa interactivo con marcadores para ubicar reportes.
 - **Filtrado por código postal**: Búsqueda de reportes por CP con visualización de tarjetas informativas.
@@ -15,7 +15,7 @@ Este proyecto es un dashboard interactivo desarrollado con Streamlit para visual
 - **Panel de categorías**: Filtrado por tipo de reporte mediante un panel de categorías jerárquico.
 - **Herramientas de diagnóstico**: Funcionalidades integradas para depuración de datos.
 
-## 🔧 Tecnologías utilizadas
+## Tecnologías utilizadas
 
 ![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 ![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
@@ -24,108 +24,11 @@ Este proyecto es un dashboard interactivo desarrollado con Streamlit para visual
 ![Folium](https://img.shields.io/badge/Folium-77B829?style=for-the-badge&logo=folium&logoColor=white)
 ![Supabase](https://img.shields.io/badge/Supabase-3ECF8E?style=for-the-badge&logo=supabase&logoColor=white)
 
-## 📁 Estructura del proyecto
 
-```
-dashboard/
-├── principal.py                  # Punto de entrada principal
-├── requirements.txt              # Dependencias del proyecto
-├── .env                          # Variables de entorno (no incluidas en repositorio)
-├── categorias.json               # Estructura de categorías para el panel de filtro
-├── components/                   # Componentes modulares del dashboard
-│   ├── categorias_destacadas.py  # Componente de tarjetas de categorías destacadas
-│   ├── estadisticas.py           # Visualizaciones estadísticas por mes
-│   ├── header.py                 # Cabecera del dashboard
-│   ├── mapa.py                   # Mapa básico (versión simple)
-│   ├── mapa_categorias.py        # Panel de filtrado por categorías
-│   └── mapa_filtros.py           # Mapa con filtros por CP y visualización de datos
-├── CP/                           # Datos de códigos postales
-│   └── output.json               # Base de datos de códigos postales
-├── csv_ejemplos/                 # Archivos CSV auxiliares
-│   └── tipo_rows.csv             # Datos de tipos de reporte
-├── scripts/                      # Scripts auxiliares
-│   ├── visualizar_datos.py       # Explorador de datos de la BD
-│   └── analizar_codigos_postales.py  # Análisis específico de códigos postales
-└── utils/                        # Utilidades compartidas
-    ├── connection.py             # Conexión a Supabase y funciones de datos
-    └── styles.py                 # Estilos CSS para el dashboard
-```
+## Interfaces 
 
-## 🚀 Instalación y ejecución
 
-### Prerrequisitos
-
-- Python 3.8 o superior
-- pip (gestor de paquetes de Python)
-
-### Instalación
-
-1. Clonar este repositorio:
-```bash
-git clone https://github.com/tu-usuario/dashboard-reportes.git
-cd dashboard-reportes
-```
-
-2. Instalar las dependencias:
-```bash
-pip install -r requirements.txt
-```
-
-3. Crear un archivo `.env` en la raíz del proyecto con las siguientes variables:
-```
-SUPABASE_URL=your_supabase_url
-SUPABASE_KEY=your_supabase_key
-```
-
-### Ejecución
-
-Para ejecutar el dashboard principal:
-```bash
-streamlit run principal.py
-```
-
-Para herramientas adicionales:
-```bash
-# Visualizador de datos
-streamlit run scripts/visualizar_datos.py
-
-# Analizador de códigos postales
-streamlit run scripts/analizar_codigos_postales.py
-```
-
-## 📊 Interfaces del Dashboard
-
-### Pantalla Principal
-La pantalla principal del dashboard integra todos los componentes y permite una visualización completa de los datos.
-
-![Dashboard Principal](https://via.placeholder.com/800x400/1A4E8C/FFFFFF?text=Dashboard+Principal)
-
-### Categorías Destacadas
-Tarjetas que muestran las principales categorías de reportes con conteo de resueltos y no resueltos.
-
-![Categorías Destacadas](https://via.placeholder.com/800x200/3E6FB9/FFFFFF?text=Categorías+Destacadas)
-
-### Mapa con Filtros
-Mapa interactivo que permite visualizar los reportes geográficamente y filtrar por código postal.
-
-![Mapa con Filtros](https://via.placeholder.com/800x400/1A4E8C/FFFFFF?text=Mapa+con+Filtros)
-
-### Información de Código Postal
-Tarjetas informativas que muestran datos del código postal y los reportes asociados.
-
-![Información de Código Postal](https://via.placeholder.com/800x300/3E6FB9/FFFFFF?text=Tarjetas+de+Código+Postal)
-
-### Estadísticas Mensuales
-Gráficos y análisis estadísticos de los reportes por mes, incluyendo distribución por tipo y evolución temporal.
-
-![Estadísticas Mensuales](https://via.placeholder.com/800x400/1A4E8C/FFFFFF?text=Estadísticas+Mensuales)
-
-### Herramientas de Diagnóstico
-Visualizador de datos y analizador de códigos postales para diagnóstico y exploración profunda.
-
-![Herramientas de Diagnóstico](https://via.placeholder.com/800x300/3E6FB9/FFFFFF?text=Herramientas+de+Diagnóstico)
-
-## 📝 Guía de Uso
+## Guía de Uso
 
 ### Filtrado por Código Postal
 1. Ingresa un código postal en el campo de texto en la sección "Filtrar por CP"
@@ -143,12 +46,8 @@ Visualizador de datos y analizador de códigos postales para diagnóstico y expl
 2. Haz clic en "Aplicar"
 3. Explora los gráficos de línea, barras y pie que muestran la distribución de reportes
 
-### Herramientas de Diagnóstico
-1. Para un análisis más profundo, ejecuta los scripts auxiliares
-2. Visualiza datos específicos de la base de datos
-3. Analiza la distribución de códigos postales y reportes
 
-## 🔍 Detalles Técnicos
+## Detalles Técnicos
 
 ### Conexión con Supabase
 El dashboard se conecta a una base de datos Supabase que contiene los reportes con su información geográfica, tipo de reporte, fechas y estado de resolución.
@@ -190,69 +89,52 @@ folium.Marker([lat, lon], popup=popup_text).add_to(m)
 folium_static(m, width=600)
 ```
 
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas. Para contribuir:
-
-1. Haz un fork del proyecto
-2. Crea una rama para tu característica (`git checkout -b feature/nueva-caracteristica`)
-3. Haz commit de tus cambios (`git commit -m 'Añadir nueva característica'`)
-4. Haz push a la rama (`git push origin feature/nueva-caracteristica`)
-5. Abre un Pull Request
-
-## 📄 Licencia
-
-Este proyecto está licenciado bajo la licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.
-
-## 👥 Equipo
-
-### Desarrolladores
+## Equipo
 
 <table>
   <tr>
     <td align="center">
-      <a href="https://github.com/desarrollador1">
-        <img src="https://via.placeholder.com/100x100/1A4E8C/FFFFFF?text=Dev1" width="100px;" alt="Desarrollador 1"/>
+      <a href="https://github.com/MikeszIPN">
+        <img src="https://avatars.githubusercontent.com/u/125789083?v=4" width="100px;" alt="Desarrollador 1"/>
         <br />
-        <sub><b>Nombre Desarrollador 1</b></sub>
-      </a>
-      <br />
-      <a href="https://linkedin.com/in/desarrollador1" title="LinkedIn">
-        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white" />
+        <sub><b>Miguel Angel Sánchez Zanjuanpa</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/desarrollador2">
-        <img src="https://via.placeholder.com/100x100/3E6FB9/FFFFFF?text=Dev2" width="100px;" alt="Desarrollador 2"/>
+      <a href="https://github.com/NavilP">
+        <img src="https://avatars.githubusercontent.com/u/125292694?v=4" width="100px;" alt="Desarrollador 2"/>
         <br />
-        <sub><b>Nombre Desarrollador 2</b></sub>
-      </a>
-      <br />
-      <a href="https://linkedin.com/in/desarrollador2" title="LinkedIn">
-        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white" />
+        <sub><b>Navil Pineda Rugerio</b></sub>
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/desarrollador3">
-        <img src="https://via.placeholder.com/100x100/2C5AA0/FFFFFF?text=Dev3" width="100px;" alt="Desarrollador 3"/>
+      <a href="https://github.com/Senorita-glez">
+        <img src="https://avatars.githubusercontent.com/u/77082096?v=4" width="100px;" alt="Desarrollador 3"/>
         <br />
-        <sub><b>Nombre Desarrollador 3</b></sub>
+        <sub><b>Daphne Sophia Gonzalez Cano</b></sub>
       </a>
-      <br />
-      <a href="https://linkedin.com/in/desarrollador3" title="LinkedIn">
-        <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=flat-square&logo=linkedin&logoColor=white" />
+    </td>
+    <td align="center">
+      <a href="https://github.com/ValeriaJahzeel">
+        <img src="https://avatars.githubusercontent.com/u/49892759?v=4" width="100px;" alt="Desarrollador 3"/>
+        <br />
+        <sub><b>Valeria Jahzeel Castañón Hernández</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/DiegoCastr00">
+        <img src="https://avatars.githubusercontent.com/u/124998012?v=4" width="100px;" alt="Desarrollador 3"/>
+        <br />
+        <sub><b>Diego Castro Elvira</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/ValeriaJahzeel">
+        <img src="https://avatars.githubusercontent.com/u/49892759?v=4" width="100px;" alt="Desarrollador 3"/>
+        <br />
+        <sub><b>Roberto Ángel Herrera</b></sub>
       </a>
     </td>
   </tr>
 </table>
 
-## 📞 Contacto
-
-Para cualquier consulta o sugerencia, no dudes en contactarnos:
-
-- Correo electrónico: [tu-correo@ejemplo.com](mailto:tu-correo@ejemplo.com)
-- GitHub: [tu-usuario](https://github.com/tu-usuario)
-
----
-
-Desarrollado con ❤️ por [Tu Nombre/Organización]
