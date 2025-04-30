@@ -1,6 +1,6 @@
 # VEU - "La flota que observa la ciudad"
 
-![Banner del Proyecto](\img\logoVEU.jpeg)
+![Banner del Proyecto](img/logoVEU.jpeg)
 
 ## Descripción
 
@@ -26,10 +26,10 @@ Este proyecto fue desarrollado en base a las problemáticas presentadas por VEU 
 
 
 ## Interfaces 
-![Primera interfaz](\img\interfaz1.jpeg)
-![Segunda interfaz](\img\interfaz2.jpeg)
+![Primera interfaz](img/interfaz1.jpeg)
+![Segunda interfaz](img/interfaz2.jpeg)
 
-![Funcionalidad](\img\funcionalidad.gif)
+![Funcionalidad](img/funcionalidad.gif)
 
 ## Guía de Uso
 
