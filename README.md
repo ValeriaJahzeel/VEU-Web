@@ -1,10 +1,10 @@
 # VEU - "La flota que observa la ciudad"
 
-![Banner del Proyecto](https://via.placeholder.com/800x200/1A4E8C/FFFFFF?text=Dashboard+de+Reportes)
+![Banner del Proyecto](\img\logoVEU.jpeg)
 
 ## Descripción
 
-Este proyecto fue desarrollado en base a las problemáticas presentadas por VEU en el Mobility Hacktaton. Esta problemática consiste en un dashboard interactivo desarrollado con Streamlit para visualizar y analizar reportes georeferenciados. Permite filtrar por código postal, ver estadísticas temporales y explorar categorías destacadas de reportes.
+Este proyecto fue desarrollado en base a las problemáticas presentadas por VEU en el Mobility Hackaton 2025. Esta problemática se resolvió mediante el diseño y la programacion de un dashboard interactivo desarrollado con Streamlit para visualizar y analizar reportes georeferenciados de incidentes en las carreteras. Permite filtrar por código postal, ver estadísticas temporales y explorar categorías destacadas de reportes.
 
 ## Características
 
@@ -26,7 +26,10 @@ Este proyecto fue desarrollado en base a las problemáticas presentadas por VEU 
 
 
 ## Interfaces 
+![Primera interfaz](\img\interfaz1.jpeg)
+![Segunda interfaz](\img\interfaz2.jpeg)
 
+![Funcionalidad](\img\funcionalidad.gif)
 
 ## Guía de Uso
 
@@ -129,10 +132,17 @@ folium_static(m, width=600)
       </a>
     </td>
     <td align="center">
-      <a href="https://github.com/ValeriaJahzeel">
-        <img src="https://avatars.githubusercontent.com/u/49892759?v=4" width="100px;" alt="Desarrollador 3"/>
+      <a href="https://github.com/Betucciny">
+        <img src="https://avatars.githubusercontent.com/u/86085514?v=4" width="100px;" alt="Desarrollador 3"/>
         <br />
         <sub><b>Roberto Ángel Herrera</b></sub>
+      </a>
+    </td>
+    <td align="center">
+      <a href="https://github.com/Nancy-07">
+        <img src="https://avatars.githubusercontent.com/u/125350005?v=4" width="100px;" alt="Desarrollador 3"/>
+        <br />
+        <sub><b>Nancy Galicia Cocoletzi</b></sub>
       </a>
     </td>
   </tr>
